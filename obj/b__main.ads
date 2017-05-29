@@ -35,7 +35,7 @@ package ada_main is
    pragma Export (C, main, "main");
 
    type Version_32 is mod 2 ** 32;
-   u00001 : constant Version_32 := 16#5d28e6bc#;
+   u00001 : constant Version_32 := 16#20febb56#;
    pragma Export (C, u00001, "mainB");
    u00002 : constant Version_32 := 16#b6df930e#;
    pragma Export (C, u00002, "system__standard_libraryB");
@@ -195,10 +195,12 @@ package ada_main is
    pragma Export (C, u00079, "system__stringsS");
    u00080 : constant Version_32 := 16#3eb7b00f#;
    pragma Export (C, u00080, "system__file_control_blockS");
-   u00081 : constant Version_32 := 16#a6359005#;
-   pragma Export (C, u00081, "system__memoryB");
-   u00082 : constant Version_32 := 16#9a554c93#;
-   pragma Export (C, u00082, "system__memoryS");
+   u00081 : constant Version_32 := 16#6b9b990b#;
+   pragma Export (C, u00081, "constantsS");
+   u00082 : constant Version_32 := 16#a6359005#;
+   pragma Export (C, u00082, "system__memoryB");
+   u00083 : constant Version_32 := 16#9a554c93#;
+   pragma Export (C, u00083, "system__memoryS");
    --  BEGIN ELABORATION ORDER
    --  ada%s
    --  interfaces%s
@@ -281,6 +283,7 @@ package ada_main is
    --  ada.exceptions%b
    --  ada.text_io%s
    --  ada.text_io%b
+   --  constants%s
    --  main%b
    --  END ELABORATION ORDER
 

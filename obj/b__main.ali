@@ -16,19 +16,19 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_OBSOLESCENT_FEATURES
 RV SPARK_05
 
-U ada_main%b		b__main.adb		e7d573fa NE OO PK IL
+U ada_main%b		b__main.adb		fb8827b4 NE OO PK IL
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W system%s		system.ads		system.ali
 
-U ada_main%s		b__main.ads		ee7853aa EE NE OO PK IL
+U ada_main%s		b__main.ads		f22507e4 EE NE OO PK IL
 W system%s		system.ads		system.ali
 
 D ada.ads		20160516092928 3ffc8e18 ada%s
 D a-except.ads		20160516092928 291912d5 ada.exceptions%s
 D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
-D b__main.ads		20170529180828 2d50790d ada_main%s
-D b__main.adb		20170529180828 e39c1822 ada_main%b
+D b__main.ads		20170529190833 310d2d43 ada_main%s
+D b__main.adb		20170529190833 e39c1822 ada_main%b
 D system.ads		20160516092931 c3282aa7 system%s
 D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
 D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
@@ -38,7 +38,7 @@ X 1 ada.ads
 X 2 a-except.ads
 54K13*Exceptions 349e19 5|6w10
 X 4 b__main.ads
-4K9*ada_main 288l5 288e13 5|8b14 211l5 211t13
+4K9*ada_main 291l5 291e13 5|8b14 212l5 212t13
 6i4*gnat_argc{integer} 10m22 10r22 5|190m7
 7m4*gnat_argv{6|67M9} 11m22 11r22 5|191m7
 8m4*gnat_envp{6|67M9} 12m22 12r22 5|192m7
@@ -58,7 +58,7 @@ X 4 b__main.ads
 . 128r22 130r22 132r22 134r22 136r22 138r22 140r22 142r22 144r22 146r22 148r22
 . 150r22 152r22 154r22 156r22 158r22 160r22 162r22 164r22 166r22 168r22 170r22
 . 172r22 174r22 176r22 178r22 180r22 182r22 184r22 186r22 188r22 190r22 192r22
-. 194r22 196r22 198r22 200r22
+. 194r22 196r22 198r22 200r22 202r22
 38m4*u00001{37M9} 39r22
 40m4*u00002{37M9} 41r22
 42m4*u00003{37M9} 43r22
@@ -141,6 +141,7 @@ X 4 b__main.ads
 196m4*u00080{37M9} 197r22
 198m4*u00081{37M9} 199r22
 200m4*u00082{37M9} 201r22
+202m4*u00083{37M9} 203r22
 X 5 b__main.adb
 10i4 E77{short_integer} 10m45 10r45 162m7 162r14
 11i4 E13{short_integer} 11m45 11r45 160m7 160r14

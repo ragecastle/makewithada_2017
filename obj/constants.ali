@@ -1,0 +1,19 @@
+V "GNAT Lib v2016"
+A -mmacosx-version-min=10.11.6
+A -gnatA
+A -mtune=core2
+A -fPIC
+P ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U constants%s		constants.ads		6b9b990b NE OO PK
+
+D constants.ads		20170529190817 6b9b990b constants%s
+D system.ads		20160516092931 c3282aa7 system%s
+X 1 constants.ads
+1K9*Constants 5l5 5e14
+3a4*Welcome_Print_Message{string}
+
