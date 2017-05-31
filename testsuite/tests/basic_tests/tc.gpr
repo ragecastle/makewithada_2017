@@ -1,0 +1,10 @@
+project TC is
+
+   for Languages use ("Ada");
+   for Source_Dirs use ("src","../../../aunit/**");
+   for Main use
+       ("example.adb");
+   for Object_Dir use "obj";
+   for Exec_Dir use "bin";
+
+end TC;
