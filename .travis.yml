@@ -35,3 +35,6 @@ script:
 
   # Start the testsuite
   - python $PWD/testsuite/run.py
+  
+notifications:
+    slack: ragecastle:AJwNGfAyrgBIKtGnlSNNSn7f
