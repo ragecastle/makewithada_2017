@@ -200,7 +200,6 @@ package body ada_main is
    end;
 
 --  BEGIN Object file/option list
-   --   /Users/rocco/Google Drive/makewithada_2017/obj/constants.o
    --   /Users/rocco/Google Drive/makewithada_2017/obj/main.o
    --   -L/Users/rocco/Google Drive/makewithada_2017/obj/
    --   -L/Users/rocco/Google Drive/makewithada_2017/obj/
