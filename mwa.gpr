@@ -2,17 +2,12 @@ project Mwa is
    for Source_Dirs use ("src/**", "testsuite/**");
    for Object_Dir use "obj";
    for Main use ("main.adb");
-      package Compiler is
+   package Compiler is
       for Default_Switches ("Ada")
-        use ("-fstack-check", --  Generate stack checking code (part of Ada)
-             "-gnata",        --  Enable assertions            (part of Ada)
-             "-gnato13",      --  Overflow checking            (part of Ada)
-             "-gnatf",                      --  Full, verbose error messages
-             "-gnatwa",                     --  All optional warnings
-             "-gnatVa",                     --  All validity checks
-             "-gnaty3abcdefhiklmnoOprstux", --  Style checks
-             "-gnat2012",                   --  Use Ada 2012
-             "-Wall",                       --  All GCC warnings
-             "-O2");                        --  Optimise (level 2/3)
+      use ("-gnata",        --  Enable assertions            (part of Ada)
+           "-gnatf",                      --  Full, verbose error messages
+           "-gnaty3abcdefhiklmnoOprstux", --  Style checks
+           "-Wall",                       --  All GCC warnings
+           "-O2");                        --  Optimise (level 2/3)
    end Compiler;
 end Mwa;
