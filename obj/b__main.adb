@@ -19,8 +19,10 @@ package body ada_main is
    E70 : Short_Integer; pragma Import (Ada, E70, "system__file_io_E");
    E73 : Short_Integer; pragma Import (Ada, E73, "system__finalization_root_E");
    E71 : Short_Integer; pragma Import (Ada, E71, "ada__finalization_E");
+   E82 : Short_Integer; pragma Import (Ada, E82, "system__assertions_E");
    E17 : Short_Integer; pragma Import (Ada, E17, "system__secondary_stack_E");
    E06 : Short_Integer; pragma Import (Ada, E06, "ada__text_io_E");
+   E84 : Short_Integer; pragma Import (Ada, E84, "test_example_E");
 
    Local_Priority_Specific_Dispatching : constant String := "";
    Local_Interrupt_States : constant String := "";
@@ -151,6 +153,8 @@ package body ada_main is
       E73 := E73 + 1;
       Ada.Finalization'Elab_Spec;
       E71 := E71 + 1;
+      System.Assertions'Elab_Spec;
+      E82 := E82 + 1;
       System.File_Io'Elab_Body;
       E70 := E70 + 1;
       E75 := E75 + 1;
@@ -165,6 +169,7 @@ package body ada_main is
       Ada.Text_Io'Elab_Spec;
       Ada.Text_Io'Elab_Body;
       E06 := E06 + 1;
+      E84 := E84 + 1;
    end adainit;
 
    procedure Ada_Main_Program;
@@ -200,6 +205,7 @@ package body ada_main is
    end;
 
 --  BEGIN Object file/option list
+   --   /Users/rocco/Google Drive/makewithada_2017/obj/test_example.o
    --   /Users/rocco/Google Drive/makewithada_2017/obj/main.o
    --   -L/Users/rocco/Google Drive/makewithada_2017/obj/
    --   -L/Users/rocco/Google Drive/makewithada_2017/obj/
