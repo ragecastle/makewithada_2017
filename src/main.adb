@@ -3,5 +3,5 @@ with Ada.Text_IO; use Ada.Text_IO;
 procedure Main is
 
 begin
-   Put_Line ("Running main");
+   Put_Line ("Running main test");
 end Main;
