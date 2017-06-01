@@ -1,5 +1,3 @@
-with AUnit.Assertions; use AUnit.Assertions;
-
 procedure Example is
    function Echo (PT : in Integer) return Integer;
 
@@ -14,6 +12,5 @@ procedure Example is
    end Echo;
 
 begin
-
-   pragma Assert (Echo (PT => 1) = 1, "Should be 1");
+   pragma Assert (Echo (PT => 1) = 2, "Should be 1");
 end Example;
