@@ -5,7 +5,7 @@ with Test_Example;
 procedure Example is
 
 begin
-   pragma Assert (Test_Example.Function_Ex (PT => 1) = 2,
+   pragma Assert (Test_Example.Function_Ex (PT => 1) = 1,
                   "{ID}: Should be {X}");
 
 exception
