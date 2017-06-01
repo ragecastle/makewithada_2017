@@ -1,22 +1,21 @@
 project TC is
 
    for Languages use ("Ada");
-   for Source_Dirs use ("src","../../../aunit/**");
+   for Source_Dirs use ("src", "../../../aunit/**", "../../../src/examples/**");
    for Main use ("example.adb");
    for Object_Dir use "obj";
    for Exec_Dir use "bin";
+
    package Compiler is
       for Default_Switches ("Ada")
-        use ("-fstack-check", --  Generate stack checking code (part of Ada)
-             "-gnata",        --  Enable assertions            (part of Ada)
-             "-gnato13",      --  Overflow checking            (part of Ada)
-             "-gnatf",                      --  Full, verbose error messages
-             "-gnatwa",                     --  All optional warnings
-             "-gnatVa",                     --  All validity checks
-             "-gnaty3abcdefhiklmnoOprstux", --  Style checks
-             "-gnat2012",                   --  Use Ada 2012
-             "-Wall",                       --  All GCC warnings
-             "-O2");                        --  Optimise (level 2/3)
+      use ("-fstack-check", --  Generate stack checking code (part of Ada)
+           "-gnata",        --  Enable assertions            (part of Ada)
+           "-gnato13",      --  Overflow checking            (part of Ada)
+           "-gnatVa",                     --  All validity checks
+           "-gnaty3abcdefhiklmnoOprstux", --  Style checks
+           "-gnat2012",                   --  Use Ada 2012
+           "-Wall",                       --  All GCC warnings
+           "-O2");                        --  Optimise (level 2/3)
    end Compiler;
 
 end TC;

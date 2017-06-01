@@ -1,16 +1,14 @@
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Exceptions; use Ada.Exceptions;
+with Test_Example;
+
 procedure Example is
-   function Echo (PT : in Integer) return Integer;
-
-   ---------------------
-   -- List_Partitions --
-   ---------------------
-
-   function Echo (PT : in Integer) return Integer
-   is
-   begin
-      return PT;
-   end Echo;
 
 begin
-   pragma Assert (Echo (PT => 1) = 2, "Should be 1");
+   pragma Assert (Test_Example.Function_Ex (PT => 1) = 2,
+                  "{ID}: Should be {X}");
+
+exception
+   when E : others =>
+      Put_Line (Exception_Message (E));
 end Example;
