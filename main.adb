@@ -1,7 +1,5 @@
 with Ada.Text_IO; use Ada.Text_IO;
-
 procedure Main is
-
 begin
-   Put_Line ("Running main test");
+    Put_Line ("Hello_World");
 end Main;

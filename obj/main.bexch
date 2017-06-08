@@ -1,17 +1,19 @@
 [GENERATED OBJECT FILE]
 b__main.o
 [PROJECT FILES]
-/Users/rocco/Google Drive/makewithada_2017/mwa.gpr
-20170531002740
+/home/jahall/git/makewithada_2017/main.gpr
+20170608003438
 [BOUND OBJECT FILES]
-/Users/rocco/Google Drive/makewithada_2017/obj/main.o
+/home/jahall/git/makewithada_2017/obj/main.o
 [GENERATED SOURCE FILES]
 b__main.ads
 b__main.adb
 b__main.ali
 [RESULTING OPTIONS]
--L/Users/rocco/Google Drive/makewithada_2017/obj/
--L/Users/rocco/Google Drive/makewithada_2017/obj/
--L/usr/local/gnat/lib/gcc/x86_64-apple-darwin14.5.0/4.9.4/adalib/
+-L/home/jahall/git/makewithada_2017/obj/
+-L/home/jahall/git/makewithada_2017/obj/
+-L/usr/gnat/lib/gcc/x86_64-pc-linux-gnu/4.9.4/adalib/
 -static
-/usr/local/gnat/lib/gcc/x86_64-apple-darwin14.5.0/4.9.4/adalib/libgnat.a
+-static-libgcc
+/usr/gnat/lib/gcc/x86_64-pc-linux-gnu/4.9.4/adalib/libgnat.a
+-ldl

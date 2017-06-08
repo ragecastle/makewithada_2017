@@ -55,7 +55,7 @@ project _Auto is
       for Spec_Suffix ("c#") use ".cs";
       for Spec_Suffix ("changelog") use ".changelog";
       for Body_Suffix ("asm2") use ".asm";
-      for Body_Suffix ("asm_cpp") use ".s";
+      for Body_Suffix ("asm_cpp") use ".S";
       for Body_Suffix ("asm") use ".s";
       for Body_Suffix ("gnat expanded code") use ".dg";
       for Body_Suffix ("java") use ".java";
