@@ -10,3 +10,6 @@ testsuite/tests/.DS_Store
 testsuite/tests/basic_tests/.DS_Store
 
 *.npp
+
+obj/**
+exe/**
