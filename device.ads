@@ -41,28 +41,33 @@ package Device is
    --
    -- Add a new State to a given State Group
 
-   procedure Set_Current_State (Group : in out Access_State_Group_Type;
-                                State : in     Natural);
+   procedure Set_Current_State (Device : in out Access_Device_Type;
+                                Group  : in     String;
+                                State  : in     Natural);
    --
    -- Set the Current State of the given State Group
 
-   procedure Set_Current_State (Group : in out Access_State_Group_Type;
-                                State : in     String);
+   procedure Set_Current_State (Device : in out Access_Device_Type;
+                                Group  : in     String;
+                                State  : in     String);
    --
    -- Set the Current State of the given State Group
 
-   function Get_Current_State (Group : Access_State_Group_Type)
+   function Get_Current_State (Device : Access_Device_Type;
+                               Group  : String)
                                return Device_String;
    --
    -- Return the Current State for the given State Group
 
-   function Get_State_Name (Group : Access_State_Group_Type;
-                            State : Natural) return Device_String;
+   function Get_State_Name (Device : Access_Device_Type;
+                            Group  : String;
+                            State  : Natural) return Device_String;
    --
    -- Returns the State Name for the State Code for the given State Group
 
-   function Get_State_Code (Group : Access_State_Group_Type;
-                            State : String) return Natural;
+   function Get_State_Code (Device : Access_Device_Type;
+                            Group  : String;
+                            State  : String) return Natural;
    --
    -- Returns the State Code for the given State Name for the given State Group
 

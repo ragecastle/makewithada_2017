@@ -102,17 +102,33 @@ package body Device is
                               Target  => State_Name,
                               Drop    => Right);
       Group.State_List.Append (State_Name);
+      Group.Current_State := Group.State_List.First_Element;
    end Add_State;
 
    -----------------------
    -- Set_Current_State --
    -----------------------
 
-   procedure Set_Current_State (Group : in out Access_State_Group_Type;
-                                State : in     Natural) is
+   procedure Set_Current_State (Device : in out Access_Device_Type;
+                                Group  : in     String;
+                                State  : in     Natural) is
+      Group_Name : Device_String;
+      Cursor : Access_State_Group_Type := Device.State_List;
    begin
-      if Natural (Group.State_List.Length) > State then
-         Group.Current_State := Group.State_List (State);
+      Ada.Strings.Fixed.Move (Source  => Group,
+                              Target  => Group_Name,
+                              Drop    => Right);
+
+      while (Cursor.Next /= null) loop
+         if Cursor.Name = Group_Name then
+            exit;
+         else
+            Cursor := Cursor.Next;
+         end if;
+      end loop;
+
+      if Natural (Cursor.State_List.Length) > State then
+         Cursor.Current_State := Cursor.State_List (State);
       end if;
    end Set_Current_State;
 
@@ -120,16 +136,32 @@ package body Device is
    -- Set_Current_State --
    -----------------------
 
-   procedure Set_Current_State (Group : in out Access_State_Group_Type;
-                                State : in     String) is
+   procedure Set_Current_State (Device : in out Access_Device_Type;
+                                Group  : in     String;
+                                State  : in     String) is
+      Group_Name : Device_String;
       State_Name : Device_String;
+      Cursor : Access_State_Group_Type := Device.State_List;
    begin
+      Ada.Strings.Fixed.Move (Source  => Group,
+                              Target  => Group_Name,
+                              Drop    => Right);
+
       Ada.Strings.Fixed.Move (Source  => State,
                               Target  => State_Name,
                               Drop    => Right);
 
-      if Group.State_List.Contains (State_Name) then
-         Group.Current_State := State_Name;
+
+      while (Cursor.Next /= null) loop
+         if Cursor.Name = Group_Name then
+            exit;
+         else
+            Cursor := Cursor.Next;
+         end if;
+      end loop;
+
+      if Cursor.State_List.Contains (State_Name) then
+         Cursor.Current_State := State_Name;
       end if;
 
    end Set_Current_State;
@@ -138,26 +170,56 @@ package body Device is
    -- Get_Current_State --
    -----------------------
 
-   function Get_Current_State (Group : Access_State_Group_Type)
+   function Get_Current_State (Device : Access_Device_Type;
+                               Group  : String)
                                return Device_String is
+      Group_Name : Device_String;
+      Cursor : Access_State_Group_Type := Device.State_List;
    begin
-      return Group.Current_State;
+      Ada.Strings.Fixed.Move (Source  => Group,
+                              Target  => Group_Name,
+                              Drop    => Right);
+
+      while (Cursor.Next /= null) loop
+         if Cursor.Name = Group_Name then
+            exit;
+         else
+            Cursor := Cursor.Next;
+         end if;
+      end loop;
+
+      return Cursor.Current_State;
    end Get_Current_State;
 
    --------------------
    -- Get_State_Name --
    --------------------
 
-   function Get_State_Name (Group : Access_State_Group_Type;
-                            State : Natural) return Device_String is
+   function Get_State_Name (Device : Access_Device_Type;
+                            Group  : String;
+                            State  : Natural) return Device_String is
+      Group_Name : Device_String;
       Failed : Device_String;
+      Cursor : Access_State_Group_Type := Device.State_List;
    begin
+      Ada.Strings.Fixed.Move (Source  => Group,
+                              Target  => Group_Name,
+                              Drop    => Right);
+
       Ada.Strings.Fixed.Move (Source  => "Failed",
                               Target  => Failed,
                               Drop    => Right);
 
-      if Natural (Group.State_List.Length) > State then
-         return Group.State_List (State);
+      while (Cursor.Next /= null) loop
+         if Cursor.Name = Group_Name then
+            return Failed;
+         else
+            Cursor := Cursor.Next;
+         end if;
+      end loop;
+
+      if Natural (Cursor.State_List.Length) > State then
+         return Cursor.State_List (State);
       else
          return Failed;
       end if;
@@ -168,16 +230,31 @@ package body Device is
    -- Get_State_Code --
    --------------------
 
-   function Get_State_Code (Group : Access_State_Group_Type;
-                            State : String) return Natural is
+   function Get_State_Code (Device : Access_Device_Type;
+                            Group  : String;
+                            State  : String) return Natural is
+      Group_Name : Device_String;
       State_Name : Device_String;
+      Cursor : Access_State_Group_Type := Device.State_List;
    begin
+      Ada.Strings.Fixed.Move (Source  => Group,
+                              Target  => Group_Name,
+                              Drop    => Right);
+
       Ada.Strings.Fixed.Move (Source  => State,
                               Target  => State_Name,
                               Drop    => Right);
 
-      if Group.State_List.Contains (State_Name) then
-         return Group.State_List.Find_Index (State_Name);
+      while (Cursor.Next /= null) loop
+         if Cursor.Name = Group_Name then
+            return 400;
+         else
+            Cursor := Cursor.Next;
+         end if;
+      end loop;
+
+      if Cursor.State_List.Contains (State_Name) then
+         return Cursor.State_List.Find_Index (State_Name);
       else
          return 400;
       end if;
@@ -221,6 +298,5 @@ package body Device is
 
       Group.Action_List.Append (Action_Name);
    end Add_Action;
-
 
 end Device;
