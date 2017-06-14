@@ -11,6 +11,11 @@ package body Lightbulb is
                   Device.Get_Current_State (Lightbulb, "Power"));
    end Power_State_Listener;
 
+   procedure Power_Action_Listener is
+   begin
+      Put_Line ("Toggling Power");
+   end Power_Action_Listener;
+
    ----------------
    -- Initialize --
    ----------------
@@ -28,6 +33,14 @@ package body Lightbulb is
       -- Attach Listener to State Group
       Device.Attach_State_Listener
         (Power_State_Group, Power_State_Listener'Access);
+
+      -- Create new Action Group
+      Power_Action_Group := Device.Create ("Power");
+      -- Add Action to Action Group
+      Device.Add_Action (Power_Action_Group, "Toggle");
+      -- Attach Listener to Action Group
+      Device.Attach_Action_Listener
+        (Power_Action_Group, Power_Action_Listener);
 
       -- Create new Device
       Lightbulb := Device.Create ("Lightbulb");
@@ -49,6 +62,7 @@ package body Lightbulb is
       Device.Set_Current_State (Device => Lightbulb,
                                 Group  => "Power",
                                 State  => "On");
+
    end Execute;
 
 end Lightbulb;
