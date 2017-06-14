@@ -8,6 +8,8 @@ package Device is
 
    subtype Device_String is String (1 .. 80);
 
+   type Listener_Type is access procedure;
+
    ------------
    -- Device --
    ------------
@@ -41,6 +43,11 @@ package Device is
    --
    -- Add a new State to a given State Group
 
+   procedure Attach_State_Listener (Group    : in out Access_State_Group_Type;
+                                    Listener : in     Listener_Type);
+   --
+   -- Add a new State Listener to a given State Group
+
    procedure Set_Current_State (Device : in out Access_Device_Type;
                                 Group  : in     String;
                                 State  : in     Natural);
@@ -71,6 +78,12 @@ package Device is
    --
    -- Returns the State Code for the given State Name for the given State Group
 
+   procedure Attach_State_Listener (Device   : in out Access_Device_Type;
+                                    Group    : in     String;
+                                    Listener : in     Listener_Type);
+   --
+   -- Add a State Listener to a given State Group for a given Device
+
    ------------
    -- Action --
    ------------
@@ -82,7 +95,12 @@ package Device is
    procedure Add_Action (Group  : in out Access_Action_Group_Type;
                          Action : in     String);
    --
-   -- Add a new Action to a given State Group
+   -- Add a new Action to a given Action Group
+
+   procedure Attach_Action_Listener (Group    : in out Access_Action_Group_Type;
+                                     Listener : in     Listener_Type);
+   --
+   -- Attach an Action Listener for a given Action Group
 
 private
 
@@ -103,26 +121,28 @@ private
       Element_Type => Device_String);
 
    type Device_Type is record
-      Name        : Device_String;
-      State_List  : Access_State_Group_Type;
-      Action_List : Access_Action_Group_Type;
-      Prev        : Access_Device_Type;
-      Next        : Access_Device_Type;
+      Name              : Device_String;
+      State_Group_List  : Access_State_Group_Type;
+      Action_Group_List : Access_Action_Group_Type;
+      Prev              : Access_Device_Type;
+      Next              : Access_Device_Type;
    end record;
 
    type State_Group_Type is record
-      Name          : Device_String;
-      State_List    : State_Vector.Vector;
-      Current_State : Device_String;
-      Prev          : Access_State_Group_Type;
-      Next          : Access_State_Group_Type;
+      Name           : Device_String;
+      State_List     : State_Vector.Vector;
+      Current_State  : Device_String;
+      State_Listener : Listener_Type;
+      Prev           : Access_State_Group_Type;
+      Next           : Access_State_Group_Type;
    end record;
 
    type Action_Group_Type is record
-      Name        : Device_String;
-      Action_List : Action_Vector.Vector;
-      Prev        : Access_Action_Group_Type;
-      Next        : Access_Action_Group_Type;
+      Name            : Device_String;
+      Action_List     : Action_Vector.Vector;
+      Action_Listener : Listener_Type;
+      Prev            : Access_Action_Group_Type;
+      Next            : Access_Action_Group_Type;
    end record;
 
 end Device;
