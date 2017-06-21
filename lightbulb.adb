@@ -3,7 +3,7 @@ with Device;
 
 package body Lightbulb is
 
-    Lightbulb : Device.Access_Device_Type;
+   Lightbulb : Device.Access_Device_Type;
 
    procedure Power_State_Listener is
    begin
@@ -21,7 +21,7 @@ package body Lightbulb is
    ----------------
 
    procedure Initialize is
-      Power_State_Group : Device.Access_State_Group_Type;
+      Power_State_Group  : Device.Access_State_Group_Type;
       Power_Action_Group : Device.Access_Action_Group_Type;
    begin
 
@@ -40,7 +40,7 @@ package body Lightbulb is
       Device.Add_Action (Power_Action_Group, "Toggle");
       -- Attach Listener to Action Group
       Device.Attach_Action_Listener
-        (Power_Action_Group, Power_Action_Listener);
+        (Power_Action_Group, Power_Action_Listener'Access);
 
       -- Create new Device
       Lightbulb := Device.Create ("Lightbulb");
