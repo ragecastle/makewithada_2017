@@ -9,7 +9,7 @@ import sys
 
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-TESTS_DIR = os.path.join(ROOT_DIR, '../')
+TESTS_DIR = os.path.join(ROOT_DIR, '../','src')
 
 
 def run_program(*argv):
@@ -138,7 +138,7 @@ def find_testcases():
     Yield Testcase instances for all testcases found in TESTS_DIR.
     """
     for dirpath, dirnames, filenames in os.walk(TESTS_DIR):
-        if 'tc.gpr' in filenames:
+        if 'mwa.gpr' in filenames:
             yield Testcase(dirpath)
 
 
