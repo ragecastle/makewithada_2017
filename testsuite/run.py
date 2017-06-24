@@ -9,7 +9,7 @@ import sys
 
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-TESTS_DIR = os.path.join(ROOT_DIR, 'testsuite', 'tests')
+TESTS_DIR = os.path.join(ROOT_DIR, '../')
 
 
 def run_program(*argv):
@@ -37,7 +37,7 @@ class Testcase:
     def __init__(self, dirname):
         self.name = dirname
         self.dirname = os.path.join(TESTS_DIR, dirname)
-        self.project_file = os.path.join(dirname, 'tc.gpr')
+        self.project_file = os.path.join(dirname, 'mwa.gpr')
 
     @property
     def expected_outputs(self):
