@@ -2,6 +2,42 @@ with Ada.Strings.Fixed; use Ada.Strings;
 
 package body Components is
 
+   ---------
+   -- Hub --
+   ---------
+
+   function Create (Name : String) return Access_Hub_Type is
+      Hub : Access_Hub_Type;
+      Hub_Name : Device_String;
+   begin
+      Ada.Strings.Fixed.Move (Source => Name,
+                             Target => Hub_Name,
+                             Drop   => Right);
+
+      Hub := new Hub_Type;
+      Hub.name := Hub_Name;
+      return Hub;
+   end Create;
+
+   procedure Add_Device (Hub : in out Access_Hub_Type;
+                         Device : in Access_Device_Type) is
+      Cursor : Access_Device_Type;
+   begin
+      Cursor := Hub.Device_List;
+
+      if Cursor = null then
+         Hub.Device_List := Device;
+      else
+         while (Cursor.Next /= null) loop
+            Cursor := Cursor.Next;
+         end loop;
+         Cursor.Next := Device;
+         Device.Prev := Cursor;
+      end if;
+
+   end Add_Device;
+
+
    ------------
    -- Device --
    ------------
@@ -300,6 +336,8 @@ package body Components is
       end loop;
 
    end Attach_State_Listener;
+
+
    ------------
    -- Action --
    ------------
@@ -337,37 +375,6 @@ package body Components is
 
       Group.Action_List.Append (Action_Name);
    end Add_Action;
-
-   --------------------
-   -- Execute_Action --
-   --------------------
-
-   procedure Execute_Action (Device : in out Access_Device_Type;
-                             Group  : in     String;
-                             Action : in     String) is
-      Group_Name  : Device_String;
-      Action_Name : Device_String;
-      Cursor      : Access_Action_Group_Type := Device.Action_Group_List;
-   begin
-      Ada.Strings.Fixed.Move (Source  => Group,
-                              Target  => Group_Name,
-                              Drop    => Right);
-      Ada.Strings.Fixed.Move (Source  => Action,
-                              Target  => Action_Name,
-                              Drop    => Right);
-
---        while (Cursor.Next /= null) loop
---           if Cursor.Name = Group_Name and then
---             Cursor.Action_List.Contains (Action_Name) and then
---               Cursor.Action_Listener /= null then
---              Cursor.State_Listener.all;
---           end if;
---              Cursor.State_Listener := Listener;
---           else
---              Cursor := Cursor.Next;
---           end if;
---        end loop;
-   end Execute_Action;
 
    ----------------------------
    -- Attach_Action_Listener --
