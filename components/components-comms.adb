@@ -1,3 +1,6 @@
+with Ada.Text_IO; use Ada.Text_IO;
+with Ada.Exceptions; use Ada.Exceptions;
+
 package body Components.Comms is
 
    -- TODO: Create a message protocol with a header/message/footer or a JSON
@@ -5,11 +8,33 @@ package body Components.Comms is
 
    -- TODO: Find a better way to do all of this, for now the POC is good enough
 
+   procedure Hub_Handler (Channel : in Stream_Access;
+                          Message : in Message_Type);
+   procedure Device_Handler (Channel : in Stream_Access;
+                             Message : in Message_Type);
+   procedure State_Group_Handler (Channel : in Stream_Access;
+                                  Message : in Message_Type);
+   procedure Action_Group_Handler (Channel : in Stream_Access;
+                                   Message : in Message_Type);
+   procedure String_Handler (Channel : in Stream_Access;
+                             Message : in Message_Type);
+
+   type Message_Handler_Array is
+     array (Message_Kind_Type) of Message_Talk_Handler_Type;
+
+   Message_Handler : Message_Handler_Array :=
+     (Hub_Kind          => Hub_Handler'Access,
+      Device_Kind       => Device_Handler'Access,
+      State_Group_Kind  => State_Group_Handler'Access,
+      Action_Group_Kind => Action_Group_Handler'Access,
+      String            => String_Handler'Access);
+
    ------------
    -- Listen --
    ------------
 
-   procedure Listen (Port : Port_Type := 5876) is
+   procedure Listen (Handler : in Message_Handler_Type;
+                     Port    : in Port_Type := 5876) is
       Address    : Sock_Addr_Type;
       Server     : Socket_Type;
       Socket_Set : Socket_Set_Type;
@@ -64,11 +89,12 @@ package body Components.Comms is
 
                      delay 0.5;
 
-                     declare
-                        Message : String := String'Input (Channel);
-                     begin
-                        Put_Line (Message);
-                     end;
+                     Handler (Channel);
+                     --                       declare
+                     --                          Message : String := String'Input (Channel);
+                     --                       begin
+                     --                          Put_Line (Message);
+                     --                       end;
 
                      -- TODO: Else if log stuff
                   end if;
@@ -89,8 +115,8 @@ package body Components.Comms is
    -- Talk --
    ----------
 
-   procedure Talk (Message : String;
-                   Port    : Port_Type := 5876) is
+   procedure Talk (Message : in Message_Type;
+                   Port    : in Port_Type := 5876) is
       Address  : Sock_Addr_Type;
       Socket   : Socket_Type;
       Channel  : Stream_Access;
@@ -111,7 +137,9 @@ package body Components.Comms is
 
       Channel := Stream (Socket);
 
-      String'Output (Channel, Message);
+      Message_Handler (Message.Kind) (Channel, Message);
+      --
+      --        String'Output (Channel, Message);
 
       delay 0.5;
 
@@ -123,12 +151,11 @@ package body Components.Comms is
    --------------
 
    procedure Register (Device : in Access_Device_Type) is
+      Message : Message_Type (Device_Kind);
    begin
-      Talk (Register);
-      -- TODO: Find a better code to ensure the right message is read
-      Talk (Message => Device.Name);
-      -- TODO: Send the rest of the information
-      -- TODO: Find a better way to do this
+      Message.Device := Device;
+      Talk (Message);
+      -- TODO: Fix this to send all needed data
    end Register;
 
    ------------
@@ -136,11 +163,12 @@ package body Components.Comms is
    ------------
 
    procedure Update (Device           : in Access_Device_Type;
-                     State_Group_Type : in String) is
+                     State_Group_Type : in Device_String) is
+      Message : Message_Type (Device_Kind);
    begin
-      Talk (Device.Name);
-      Talk (Get_Current_State (State_Group_Type));
-      -- TODO: Find a better way to do this
+      Message.Device := Device;
+      Talk (Message);
+      -- TODO: Fix this to send all needed data
    end Update;
 
    -------------
@@ -148,13 +176,43 @@ package body Components.Comms is
    -------------
 
    procedure Control (Device       : in Access_Device_Type;
-                      Action_Group : in String;
-                      Action       : in String) is
+                      Action_Group : in Device_String;
+                      Action       : in Device_String) is
+      Message : Message_Type (Device_Kind);
    begin
-      Talk (Device.Name);
-      Talk (Action_Group);
-      Talk (Action);
-      -- TODO: Find a better way to do this
+      Message.Device := Device;
+      Talk (Message);
+      -- TODO: Fix this to send all needed data
    end Control;
+
+   procedure Hub_Handler (Channel : in Stream_Access;
+                          Message : in Message_Type) is
+   begin
+      Access_Hub_Type'Output (Channel, Message.Hub);
+   end Hub_Handler;
+
+   procedure Device_Handler (Channel : in Stream_Access;
+                          Message : in Message_Type) is
+   begin
+      Access_Device_Type'Output (Channel, Message.Device);
+   end Device_Handler;
+
+   procedure State_Group_Handler (Channel : in Stream_Access;
+                          Message : in Message_Type) is
+   begin
+      Access_State_Group_Type'Output (Channel, Message.State_Group);
+   end State_Group_Handler;
+
+   procedure Action_Group_Handler (Channel : in Stream_Access;
+                          Message : in Message_Type) is
+   begin
+      Access_Action_Group_Type'Output (Channel, Message.Action_Group);
+   end Action_Group_Handler;
+
+   procedure String_Handler (Channel : in Stream_Access;
+                             Message : in Message_Type) is
+   begin
+      Device_String'Output (Channel, Message.Message);
+   end String_Handler;
 
 end Components.Comms;

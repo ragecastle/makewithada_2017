@@ -1,34 +1,38 @@
 <?xml version="1.0"?>
-<Locations>
+<Locations >
   <Project>
     <vfs_file>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_file>
-    <file_marker column=" 1" line=" 1" >
+    <file_marker column=" 24" line=" 5" >
       <vfs_project />
       <vfs_file>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 1" >
+    <file_marker column=" 1" line=" 8" >
       <vfs_project>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_project>
       <vfs_file>/home/jahall/git/makewithada_2017/components/main.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 6" >
-      <vfs_project>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_project>
-      <vfs_file>/home/jahall/git/makewithada_2017/components/main.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
+    <file_marker column=" 14" line=" 3" >
       <vfs_project>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_project>
       <vfs_file>/home/jahall/git/makewithada_2017/components/components.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 6" >
-      <vfs_project>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_project>
-      <vfs_file>/home/jahall/git/makewithada_2017/components/components.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
+    <file_marker column=" 51" line=" 48" >
       <vfs_project>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_project>
       <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.ads</vfs_file>
     </file_marker>
-    <file_marker current="true" column=" 1" line=" 1" >
+    <file_marker column=" 29" line=" 112" >
       <vfs_project>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_project>
-      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 12" >
+      <vfs_project>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 18" >
+      <vfs_project>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.ads</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 62" line=" 24" >
+      <vfs_project>/home/jahall/git/makewithada_2017/components/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.ads</vfs_file>
     </file_marker>
   </Project>
 </Locations>

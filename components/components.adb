@@ -19,8 +19,8 @@ package body Components is
       return Hub;
    end Create;
 
-   procedure Add_Device (Hub : in out Access_Hub_Type;
-                         Device : in Access_Device_Type) is
+   procedure Add_Device (Hub    : in out Access_Hub_Type;
+                         Device : in     Access_Device_Type) is
       Cursor : Access_Device_Type;
    begin
       Cursor := Hub.Device_List;

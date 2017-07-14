@@ -5,10 +5,13 @@ package body Hub is
 
    Living_Room : Components.Access_Hub_Type;
 
-   procedure Register_Listener (Device : Components.Access_Device_Type) is
+   procedure Register_Listener (Channel : Stream_Access) is
+      Message : Access_Message_Type;
    begin
-      Components.Add_Device (Living_Room, Device);
-      Put_Line ("Added New Device");
+      Access_Message_Type'Output (Channel, Message);
+
+      Components.Add_Device (Living_Room,
+                            Message.)
    end Register_Listener;
 
    ----------------
@@ -21,11 +24,7 @@ package body Hub is
 
       -- Create new Hub
       Living_Room := Components.Create ("Living_Room");
-
-      -- Attach a listener to register new Devices
-      Components.Attach_Register_Listener
-        (Living_Room, Register_Listener'Access);
-
+      Components.Comms.Listen (Register_Listener);
    end Initialize;
 
    -------------
@@ -34,7 +33,7 @@ package body Hub is
 
    procedure Execute is
    begin
-      null;
+      Components.Comms.Listen ();
    end Execute;
 
 end Hub;

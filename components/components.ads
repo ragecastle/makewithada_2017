@@ -21,15 +21,10 @@ package Components is
    --
    -- Create a new Hub
 
-   procedure Add_Device (Hub : in out Access_Hub_Type;
-                         Device : in Access_Device_Type);
+   procedure Add_Device (Hub    : in out Access_Hub_Type;
+                         Device : in     Access_Device_Type);
    --
    -- Add a new Device to a given Hub
-
-   procedure Attach_Register_Listener (Hub      : in out Access_Hub_Type;
-                                       Listener : in     Register_Listener_Type);
-   --
-   -- Attach a new Register Listener to a given Hub
 
    ------------
    -- Device --
@@ -146,7 +141,6 @@ private
    type Hub_Type is record
       Name              : Device_String;
       Device_List       : Access_Device_Type;
-      Register_Listener : Register_Listener_Type;
    end record;
 
    type Device_Type is record
