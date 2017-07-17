@@ -69,32 +69,32 @@ package body Lightbulb is
    procedure Execute is
    begin
       Components.Set_Current_State (Device => Lightbulb,
-                                Group  => "Power",
-                                State  => "Off");
+                                    Group  => "Power",
+                                    State  => "Off");
 
       delay 10.0;
 
       Components.Set_Current_State (Device => Lightbulb,
-                                Group  => "Power",
-                                State  => "On");
+                                    Group  => "Power",
+                                    State  => "On");
 
       delay 10.0;
 
       Components.Set_Current_State (Device => Lightbulb,
-                                Group => "Color",
-                                State => "Red");
+                                    Group => "Color",
+                                    State => "Red");
 
       delay 10.0;
 
       Components.Set_Current_State (Device => Lightbulb,
-                                Group => "Color",
-                                State => "Blue");
+                                    Group => "Color",
+                                    State => "Blue");
 
       delay 10.0;
 
       Components.Set_Current_State (Device => Lightbulb,
-                                Group => "Color",
-                                State => "Yellow");
+                                    Group => "Color",
+                                    State => "Yellow");
 
       delay 10.0;
 
