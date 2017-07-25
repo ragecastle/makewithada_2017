@@ -4,31 +4,25 @@ package Components.Comms is
 
    type Message_Kind_Type is (Register,
                               Update,
-                              Command);
+                              Command,
+                              EOM);
 
-   type Message_Type (Kind : Message_Kind_Type) is record
-      Device_Name : Device_String;
-      case Kind is
-      when Register =>
-         null;
-         when Update =>
-            State_Group   : Device_String;
-            Current_State : Device_String;
-         when Command =>
-            Action_Group : Device_String;
-            Action       : Device_String;
-      end case;
+   type Message_Identifier_Type is (Device_Name,
+                                    State_Group_Name,
+                                    State_Name);
+
+   type Message_Type is record
+      Kind       : Message_Kind_Type;
+      Identifier : Message_Identifier_Type;
+      Message    : Device_String;
    end record;
 
+   type Message_Handler_Type is access
+     function (Channel : in Stream_Access) return Boolean;
 
-   function Create_Message (Kind : Message_Kind_Type) return Access_Message_Type;
-   --
-   -- Creates a new message to be sent
-
-   type Message_Handler_Type is access procedure (Channel : in Stream_Access);
-
-   type Message_Talk_Handler_Type is access procedure (Channel : in Stream_Access;
-                                                       Message : Message_Type);
+   type Message_Talk_Handler_Type is access
+     procedure (Channel : in Stream_Access;
+                Message : in Message_Type);
 
    procedure Listen (Handler : in Message_Handler_Type;
                      Port    : in Port_Type := 5876);
@@ -44,15 +38,15 @@ package Components.Comms is
    --
    -- Register a Device with a Hub.
 
-   procedure Update (Device           : in Access_Device_Type;
-                     State_Group_Type : in Device_String);
+   procedure Update (Device      : in Access_Device_Type;
+                     State_Group : in String);
    --
    -- Send an update of the given State Group for a Device
 
-   procedure Control (Device       : in Access_Device_Type;
-                      Action_Group : in Device_String;
-                      Action       : in Device_String);
-   --
+--     procedure Control (Device       : in Access_Device_Type;
+--                        Action_Group : in Device_String;
+--                        Action       : in Device_String);
+--     --
    -- Send a request for Action of a given Action Group for a given Device
 
 end Components.Comms;

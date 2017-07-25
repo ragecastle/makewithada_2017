@@ -1,73 +1,113 @@
 <?xml version="1.0"?>
 <Locations >
-  <Project>
-    <vfs_file />
+  <Project >
     <file_marker column=" 9" line=" 1" >
       <vfs_project />
       <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
     </file_marker>
-    <file_marker column=" 4" line=" 7" >
-      <vfs_project />
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
       <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 10" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/lightbulb.ads</vfs_file>
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 22" line=" 73" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 9" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 15" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 42" line=" 70" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 123" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 7" line=" 122" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 29" line=" 137" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 65" line=" 150" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 164" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 41" line=" 30" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.ads</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
-      <vfs_project />
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 22" line=" 185" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 7" line=" 169" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 35" line=" 179" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 7" line=" 169" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 4" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 193" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 202" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 193" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/components/components-comms.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 7" line=" 65" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
       <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/lightbulb.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.adb</vfs_file>
+    <file_marker column=" 7" line=" 12" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/lightbulb.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
+    <file_marker column=" 45" line=" 2" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/lightbulb.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 75" line=" 3" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
-    </file_marker>
-    <file_marker column=" 9" line=" 1" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
-    </file_marker>
-    <file_marker column=" 43" line=" 3" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
-    </file_marker>
-    <file_marker column=" 9" line=" 1" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
-    </file_marker>
-    <file_marker column=" 24" line=" 5" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
-    </file_marker>
-    <file_marker current="true" column=" 30" line=" 3" >
-      <vfs_project />
-      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
-    </file_marker>
-  </Project>
-  <Project >
-    <vfs_file >/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
-    <file_marker column=" 9" line=" 1">
-      <vfs_project  />
-      <vfs_file >/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_file>
-    </file_marker>
-    <file_marker current="true" column=" 1" line=" 121">
-      <vfs_project >/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
-      <vfs_file >/home/jahall/git/makewithada_2017/lightbulb/main.adb</vfs_file>
+    <file_marker current="true" column=" 17" line=" 64" >
+      <vfs_project>/home/jahall/git/makewithada_2017/lightbulb/main.gpr</vfs_project>
+      <vfs_file>/home/jahall/git/makewithada_2017/lightbulb/lightbulb.adb</vfs_file>
     </file_marker>
   </Project>
 </Locations>

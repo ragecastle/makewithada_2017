@@ -1,5 +1,5 @@
 with Ada.Text_IO; use Ada.Text_IO;
-with Components;
+with Components.Comms; use Components.Comms;
 
 package body Lightbulb is
 
@@ -9,6 +9,7 @@ package body Lightbulb is
    begin
       Put_Line ("Changed Power State to: " &
                   Components.Get_Current_State (Lightbulb, "Power"));
+      Update (Lightbulb, "Power");
    end Power_State_Listener;
 
    procedure Power_Action_Listener is
@@ -59,6 +60,8 @@ package body Lightbulb is
       Components.Add_State_Group (Lightbulb, Power_State_Group);
       -- Add the Color State Group to the Device
       Components.Add_State_Group (Lightbulb, Color_State_Group);
+
+      Register (Lightbulb);
 
    end Initialize;
 

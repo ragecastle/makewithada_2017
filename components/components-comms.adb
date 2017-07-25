@@ -1,33 +1,11 @@
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Exceptions; use Ada.Exceptions;
+with Ada.Strings.Fixed; use Ada.Strings;
 
 package body Components.Comms is
 
    -- TODO: Create a message protocol with a header/message/footer or a JSON
    --       for like message integrity and stuff
-
-   -- TODO: Find a better way to do all of this, for now the POC is good enough
-
-   procedure Hub_Handler (Channel : in Stream_Access;
-                          Message : in Message_Type);
-   procedure Device_Handler (Channel : in Stream_Access;
-                             Message : in Message_Type);
-   procedure State_Group_Handler (Channel : in Stream_Access;
-                                  Message : in Message_Type);
-   procedure Action_Group_Handler (Channel : in Stream_Access;
-                                   Message : in Message_Type);
-   procedure String_Handler (Channel : in Stream_Access;
-                             Message : in Message_Type);
-
-   type Message_Handler_Array is
-     array (Message_Kind_Type) of Message_Talk_Handler_Type;
-
-   Message_Handler : Message_Handler_Array :=
-     (Hub_Kind          => Hub_Handler'Access,
-      Device_Kind       => Device_Handler'Access,
-      State_Group_Kind  => State_Group_Handler'Access,
-      Action_Group_Kind => Action_Group_Handler'Access,
-      String            => String_Handler'Access);
 
    ------------
    -- Listen --
@@ -89,7 +67,10 @@ package body Components.Comms is
 
                      delay 0.5;
 
-                     Handler (Channel);
+                     if Handler (Channel) then
+                        Close_Socket (Server);
+                     end if;
+
                      --                       declare
                      --                          Message : String := String'Input (Channel);
                      --                       begin
@@ -108,7 +89,7 @@ package body Components.Comms is
          Ada.Text_IO.Put_Line
            (Exception_Name (E) & ": " & Exception_Message (E));
          Close_Socket (Server);
-
+         Close_Selector (Selector);
    end Listen;
 
    ----------
@@ -137,7 +118,9 @@ package body Components.Comms is
 
       Channel := Stream (Socket);
 
-      Message_Handler (Message.Kind) (Channel, Message);
+      Message_Type'Output (Channel, Message);
+
+--        Message_Handler (Message.Kind) (Channel, Message);
       --
       --        String'Output (Channel, Message);
 
@@ -151,10 +134,26 @@ package body Components.Comms is
    --------------
 
    procedure Register (Device : in Access_Device_Type) is
-      Message : Message_Type (Device_Kind);
+      Message : Message_Type;
    begin
-      Message.Device := Device;
+      Message.Kind := Comms.Register;
+
+      Message.Identifier := Device_Name;
+      Message.Message := Device.Name;
       Talk (Message);
+      -- TODO: while State_Group.Next loop
+      Message.Identifier := State_Group_Name;
+      Message.Message := Device.State_Group_List.Name;
+      Talk (Message);
+      --TODO: while State.Next loop
+      Message.Identifier := State_Name;
+      Message.Message := Device.State_Group_List.State_List (1);
+      Talk (Message);
+      -- TODO: end loop;
+      -- TODO: end loop;
+      Message.Kind := EOM;
+      Talk (Message);
+
       -- TODO: Fix this to send all needed data
    end Register;
 
@@ -162,11 +161,27 @@ package body Components.Comms is
    -- Update --
    ------------
 
-   procedure Update (Device           : in Access_Device_Type;
-                     State_Group_Type : in Device_String) is
-      Message : Message_Type (Device_Kind);
+   procedure Update (Device      : in Access_Device_Type;
+                     State_Group : in String) is
+      Message : Message_Type;
+      State_Group_Name : Device_String;
    begin
-      Message.Device := Device;
+      Ada.Strings.Fixed.Move (Source  => State_Group,
+                              Target  => State_Group_Name,
+                              Drop    => Right);
+
+      Message.Kind := Comms.Register;
+
+      Message.Identifier := Device_Name;
+      Message.Message := Device.Name;
+      Talk (Message);
+
+      Message.Identifier := Comms.State_Group_Name;
+      Message.Message := State_Group_Name;
+      Talk (Message);
+
+      Message.Identifier := State_Name;
+      Message.Message := Get_Current_State (Device, State_Group_Name);
       Talk (Message);
       -- TODO: Fix this to send all needed data
    end Update;
@@ -175,44 +190,14 @@ package body Components.Comms is
    -- Control --
    -------------
 
-   procedure Control (Device       : in Access_Device_Type;
-                      Action_Group : in Device_String;
-                      Action       : in Device_String) is
-      Message : Message_Type (Device_Kind);
-   begin
-      Message.Device := Device;
-      Talk (Message);
-      -- TODO: Fix this to send all needed data
-   end Control;
-
-   procedure Hub_Handler (Channel : in Stream_Access;
-                          Message : in Message_Type) is
-   begin
-      Access_Hub_Type'Output (Channel, Message.Hub);
-   end Hub_Handler;
-
-   procedure Device_Handler (Channel : in Stream_Access;
-                          Message : in Message_Type) is
-   begin
-      Access_Device_Type'Output (Channel, Message.Device);
-   end Device_Handler;
-
-   procedure State_Group_Handler (Channel : in Stream_Access;
-                          Message : in Message_Type) is
-   begin
-      Access_State_Group_Type'Output (Channel, Message.State_Group);
-   end State_Group_Handler;
-
-   procedure Action_Group_Handler (Channel : in Stream_Access;
-                          Message : in Message_Type) is
-   begin
-      Access_Action_Group_Type'Output (Channel, Message.Action_Group);
-   end Action_Group_Handler;
-
-   procedure String_Handler (Channel : in Stream_Access;
-                             Message : in Message_Type) is
-   begin
-      Device_String'Output (Channel, Message.Message);
-   end String_Handler;
+--     procedure Control (Device       : in Access_Device_Type;
+--                        Action_Group : in Device_String;
+--                        Action       : in Device_String) is
+--        Message : Message_Type;
+--     begin
+--        Message.Device := Device;
+--        Talk (Message);
+--        -- TODO: Fix this to send all needed data
+--     end Control;
 
 end Components.Comms;

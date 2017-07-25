@@ -1,6 +1,6 @@
 project Main is
 
-   for Source_Dirs use (".");
+   for Source_Dirs use (".", "../components");
    for Object_Dir use "./obj";
    for Exec_Dir use "./";
    for Main use ("main.adb");

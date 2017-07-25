@@ -1,9 +1,9 @@
-with Ada.Text_IO; use Ada.Text_IO;
-with GNAT.Sockets; use GNAT.Sockets;
-with Ada.Exceptions; use Ada.Exceptions;
+with Hub;
 
 procedure Main is
 
 begin
+
+  Hub.Initialize;
 
 end Main;

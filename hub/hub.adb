@@ -1,39 +1,46 @@
 with Ada.Text_IO; use Ada.Text_IO;
-with Components;
+with Components.Comms; use Components;
+with GNAT.Sockets; use GNAT.Sockets;
 
 package body Hub is
 
-   Living_Room : Components.Access_Hub_Type;
+  Living_Room : Components.Access_Hub_Type;
 
-   procedure Register_Listener (Channel : Stream_Access) is
-      Message : Access_Message_Type;
-   begin
-      Access_Message_Type'Output (Channel, Message);
+  function Register_Listener (Channel : Stream_Access) return boolean is
+    Message : Comms.Message_Type := Comms.Message_Type'Input (Channel);
+  begin
 
-      Components.Add_Device (Living_Room,
-                            Message.)
-   end Register_Listener;
+    Comms.Message_Type'Output (Channel, Message);
+    Put_Line (Message.Kind'Img);
+    Put_Line (" "  & Message.Identifier'Img);
+    Put_Line ("  " & Message.Message);
+    New_Line;
 
-   ----------------
-   -- Initialize --
-   ----------------
+    return False;
 
-   procedure Initialize is
-      Living_Room : Components.Access_Hub_Type;
-   begin
+  end Register_Listener;
 
-      -- Create new Hub
-      Living_Room := Components.Create ("Living_Room");
-      Components.Comms.Listen (Register_Listener);
-   end Initialize;
+  ----------------
+  -- Initialize --
+  ----------------
 
-   -------------
-   -- Execute --
-   -------------
+  procedure Initialize is
+    Living_Room : Components.Access_Hub_Type;
+  begin
 
-   procedure Execute is
-   begin
-      Components.Comms.Listen ();
-   end Execute;
+    -- Create new Hub
+    Living_Room := Components.Create ("Living_Room");
+    Comms.Listen (Register_Listener'Access);
+  end Initialize;
+
+  -------------
+  -- Execute --
+  -------------
+
+  procedure Execute is
+  begin
+    null;
+    --        Components.Comms.Listen ();
+  end Execute;
 
 end Hub;
